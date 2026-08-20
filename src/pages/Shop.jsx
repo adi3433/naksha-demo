@@ -5,7 +5,9 @@ import { useRevealScope } from "../lib/reveal";
 import ProductCard from "../components/ProductCard";
 
 const CATEGORIES = ["ALL", "TEES", "HOODIES", "TROUSERS", "OUTERWEAR"];
-const SIZES = ["S", "M", "L", "XL", "XXL"];
+// Every size value in the catalogue, in first-seen order (S–XXL, then 28–36),
+// mirroring how Shopify's Search & Discovery filters enumerate option values.
+const SIZES = [...new Set(products.flatMap((p) => p.sizes))];
 const SORTS = [
   { value: "newest", label: "NEWEST" },
   { value: "price-asc", label: "PRICE: LOW TO HIGH" },
