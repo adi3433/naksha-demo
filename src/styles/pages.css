@@ -261,6 +261,7 @@
   overflow-x: auto;
   scrollbar-width: none;
   padding: 8px 0;
+  min-width: 0;
 }
 
 .chip-row::-webkit-scrollbar {
@@ -358,6 +359,26 @@
 
   .sort-box .meta {
     display: none;
+  }
+
+  .filter-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 16px;
+    min-height: 0;
+    padding: 4px 0 8px;
+  }
+
+  .filter-inner .chip-row:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .sort-box {
+    margin-left: 0;
+  }
+
+  .chip {
+    min-height: 44px;
   }
 }
 
