@@ -55,6 +55,19 @@ the credentials at build time.
 - If the store is unreachable, the demo falls back to local data silently —
   it never breaks in front of the client.
 
-Note: a dev store's checkout is password-protected by default. In admin →
-Online Store → Preferences, remove the storefront password so the client can
-reach the checkout page.
+## The dev-store password page
+
+Development stores keep their storefront password until the store is put on a
+paid plan — it cannot be switched off. This only affects the final checkout
+page (the demo itself browses via the Storefront API and is never blocked).
+
+The standard agency workaround:
+
+1. Admin → Online Store → Preferences → set the password to something clean,
+   e.g. `naksha`.
+2. Before demoing checkout, open https://naksha-demo.myshopify.com once in the
+   same browser and enter the password. Shopify remembers it for the session,
+   and CHECKOUT from the demo then goes straight to the real checkout page.
+3. Tell the client the same: "store preview password: naksha". Clients are
+   used to password-gated previews; the wall disappears automatically the day
+   the store goes on a plan.
