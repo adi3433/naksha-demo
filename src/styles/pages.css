@@ -232,7 +232,7 @@
 /* ---------- shop ---------- */
 
 .shop-head {
-  padding: 64px 0 40px;
+  padding-block: 64px 40px;
 }
 
 .shop-head h1 {
@@ -366,7 +366,7 @@
     grid-template-columns: 1fr auto;
     column-gap: 16px;
     min-height: 0;
-    padding: 4px 0 8px;
+    padding-block: 4px 8px;
   }
 
   .filter-inner .chip-row:first-child {
@@ -768,7 +768,7 @@
 }
 
 .page-head {
-  padding: 64px 0 48px;
+  padding-block: 64px 48px;
 }
 
 .page-head h1 {
