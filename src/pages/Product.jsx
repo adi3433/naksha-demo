@@ -48,14 +48,18 @@ export default function Product() {
     if (!local) navigate("/shop", { replace: true });
   }, [local, navigate]);
 
+  // A scroll listener rather than an IntersectionObserver: fast flicks can
+  // move the button across the whole viewport between frames, which never
+  // fires an intersection change, so the bar would fail to appear.
   useEffect(() => {
-    const btn = addBtnRef.current;
-    if (!btn) return;
-    const io = new IntersectionObserver(([entry]) => {
-      setBarVisible(!entry.isIntersecting && entry.boundingClientRect.top < 0);
-    });
-    io.observe(btn);
-    return () => io.disconnect();
+    const onScroll = () => {
+      const btn = addBtnRef.current;
+      if (!btn) return;
+      setBarVisible(btn.getBoundingClientRect().bottom < 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, [slug]);
 
   useEffect(() => () => clearTimeout(addedTimer.current), []);
